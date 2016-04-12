@@ -3,7 +3,7 @@ Made Using HTML,CSS,JQuery and AJAX
 
 
 <div class="row">
-<img src="1.png>
+<img src="1.png">
 </div>
 
 <div class="row">

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+    
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>  
+    
+    
+    <style>
+    
+        .container{
+           width: 600px;
+            margin: 50px auto;
+            background-color: rgb(170, 33, 36);
+            padding:30px;
+            text-align: center;
+            color: aliceblue ; 
+            border-radius: 30px;
+            border-width: thick;
+            border-style: groove;
+        }
+     
+        body{
+            
+            
+            background-image: url('http://www.hdwallpapers.in/walls/san_andreas_2015_movie-wide.jpg');
+            background-position: center; 
+            background-size: cover;
+             background-position: 30% 20%; 
+
+            
+        }
+        .special{
+            color:black;
+           background-color:azure;
+            width: 500px;
+            margin:40px auto;
+            border-radius: 20px;
+            padding:10px;
+            
+            
+        }
+        input{
+            
+            
+            color:black;
+        }
+        button{
+            
+
+            color:black;
+        }
+       
+    </style>
+    
+    </head>
+<body >
+<div class="container" >
+    <h1>SAMPLE MOVIE APP</h1>
+
+    <div class="row">
+    
+        <input type="text" placeholder="Enter The Movie Name" >
+    
+    </div>
+    
+    <div class="row">
+    
+        <button class="btn btn-success" type="button" onclick="myfunc()">Submit</button>
+    
+    </div><div class="special"><p>Just Enter the Movie and Click the Button</p></div>
+  
+     </div>
+    </body> 
+    
+    
+    <script>                                                     
+                                                                                             
+        
+     var myfunc=function(){
+         
+         $('.special').empty();
+
+     var input1=$('input').val();
+         
+         
+          var movie = 'http://www.omdbapi.com/?t='+input1+'&y=&plot=short&r=json';
+    $.getJSON(movie, function(data){
+
+        console.log(data)
+       
+        $('.special').append('<ul align="left"><li>Movie Title: '+data.Title+'</li><li>Release Date: '+data.Year+'</li><li>Rating: '+data.Rated+'</li><li>IMDB Rating: '+data.imdbRating+'</li><li>MetaScore: '+data.Metascore+'</li><li>Plot Description: '+data.Plot+'</li></ul>');
+        
+             $('.special').append('<img align="center" src="'+data.Poster +'">')
+       
+
+    }).error(function(){
+        $('.special').append('<p>No Titles Found,Try Again</p>');
+    }); 
+         
+     
+     };
+        
+        
+        
+
+    </script>
+
+</html>
